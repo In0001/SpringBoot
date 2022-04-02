@@ -1,0 +1,39 @@
+:root {
+    --fonts: Comic Sans MS, Comic Sans, cursive;
+}
+
+h1{
+    font-family: var(--fonts);
+}
+p{
+    color: black;
+}
+p span{
+    color: red;
+}
+div {
+    text-align: center;
+}
+fieldset {
+    font-size: 150%;
+    font-family: var(--fonts);
+    width: 25%;
+    margin: auto;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    display: none;
+}
+input[type=checkbox] {
+    transform: scale(1.2);
+}
+input{
+    font-size: 80%;
+    font-family: var(--fonts);
+    border-radius: 5px;
+}
+button{
+    font-size: 100%;
+    font-family: var(--fonts);
+    border-radius: 5px;
+}
