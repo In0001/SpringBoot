@@ -41,12 +41,15 @@ public class MainController {
         if (result.get(0).equals("Нет корней"))
             model.addAttribute("result3", result.get(0));
         else if (result.get(0).equals(result.get(1)))
-            model.addAttribute("result1", "x=" + result.get(0));
+            model.addAttribute("result0", "x=" + result.get(0));
         else {
-            model.addAttribute("result1", "x<sub>1</sub>=" + result.get(0));
-            model.addAttribute("result2", "x<sub>2</sub>=" + result.get(1));
+            model.addAttribute("x", "x");
+            model.addAttribute("one", "1");
+            model.addAttribute("equals", "=");
+            model.addAttribute("result1", result.get(0));
+            model.addAttribute("two", "2");
+            model.addAttribute("result2", result.get(1));
         }
-
         return "result";
     }
 
