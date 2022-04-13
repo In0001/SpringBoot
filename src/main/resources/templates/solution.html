@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Калькулятор</title>
+    <link rel="stylesheet" th:href="@{css/styles.css}" />
+</head>
+<body>
+<form>
+    <h1 style="text-align: center">Решение квадратных уравнений</h1>
+    <fieldset>
+        <small style="text-align: right"><a href="/">Главная</a></small>
+        <small style="text-align: right" th:inline="text" >[[${#httpServletRequest.remoteUser}]]
+            <a href="/logout">Выйти</a></small>
+        <div>
+            <p><span th:text="${a}"></span>x<sup>2</sup><a th:text="${signB}"></a><span th:text="${newB}"></span>x<a th:text="${signC}"></a><span th:text="${newC}"></span>=0</p>
+            <p><i>1) Найдем дискриминант:</i></p>
+            <p>d=<a th:text="${dB}"></a><sup>2</sup>-4*<a th:text="${dA}"></a>*<a th:text="${dC}"></a>=<a th:text="${d}"></a></p>
+            <p><i>2) Найдем корни уравнения:</i></p>
+            <p th:text="${result1}"></p>
+            <p th:text="${result2}"></p>
+        </div>
+    </fieldset>
+</form>
+</body>
+</html>

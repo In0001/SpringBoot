@@ -2,37 +2,55 @@
     --fonts: Comic Sans MS, Comic Sans, cursive;
 }
 
-h1{
+h1 {
     font-family: var(--fonts);
 }
-p{
+
+p {
     color: black;
 }
-p span{
+
+p span {
     color: red;
 }
+
+small {
+    display: block
+}
+
 div {
     text-align: center;
 }
+
 fieldset {
     font-size: 150%;
     font-family: var(--fonts);
     width: 25%;
     margin: auto;
 }
+
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
     display: none;
 }
+
 input[type=checkbox] {
     transform: scale(1.2);
 }
-input{
+
+select {
     font-size: 80%;
     font-family: var(--fonts);
     border-radius: 5px;
 }
-button{
+
+input {
+    font-size: 80%;
+    font-family: var(--fonts);
+    border-radius: 5px;
+}
+
+button {
     font-size: 100%;
     font-family: var(--fonts);
     border-radius: 5px;

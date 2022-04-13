@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Калькулятор</title>
+    <link rel="stylesheet" th:href="@{css/styles.css}" />
+</head>
+<body>
+<form method="post">
+    <h1 style="text-align: center">Добро пожаловать!</h1>
+    <fieldset>
+        <small style="text-align: right"><a href="/login">Войти</a></small>
+        <div>
+            <p>Регистрация</p>
+            <input type="text" name="username" required="required" placeholder="Введите логин"> <br /> <br />
+            <input type="password" name="password" required="required" placeholder="Введите пароль"> <br /> <br />
+            <input type="password" name="passwordConfirmation" required="required" placeholder="Повторно введите пароль"> <br /> <br />
+            <select name="roles">
+                <option selected value="user">Я обычный пользователь:(</option>
+                <option value="premium">Я премиум-пользователь:)</option>
+            </select>
+            <br /> <br />
+            <button type="submit"><small>Зарегистрироваться</small></button>
+        </div>
+    </fieldset>
+    <div th:if="${usernameError}"><a th:text="${usernameError}"></a></div>
+    <div th:if="${passwordError}"><a th:text="${passwordError}"></a></div>
+    <div th:if="${successfulRegistration}"><a th:text="${successfulRegistration}"></a></div>
+</form>
+</body>
+</html>

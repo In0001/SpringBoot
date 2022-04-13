@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Калькулятор</title>
+    <link rel="stylesheet" th:href="@{css/styles.css}" />
+</head>
+<body>
+<form th:action="@{/login}" method="post">
+    <h1 style="text-align: center">Добро пожаловать!</h1>
+    <fieldset>
+        <div>
+            <p>Чтобы воспользоваться калькулятором, войдите в систему</p>
+            <label>
+                <input type="text" name="username" required="required" placeholder="Введите логин">
+            </label> <br /> <br />
+            <label>
+                <input type="password" name="password" required="required" placeholder="Введите пароль">
+            </label> <br /> <br />
+            <button type="submit">Войти</button> <br /> <br />
+            <small><a href="/registration">Зарегистрироваться</a></small>
+        </div>
+    </fieldset>
+    <div th:if="${param.logout}">Вы вышли из системы</div>
+    <div th:if="${param.error}">Неправильный логин или пароль</div>
+</form>
+</body>
+</html>

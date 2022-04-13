@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Калькулятор</title>
     <link rel="stylesheet" th:href="@{css/styles.css}" />
@@ -8,16 +8,23 @@
 <form method="post">
     <h1 style="text-align: center">Решение квадратных уравнений</h1>
     <fieldset>
+        <small style="text-align: right"><a href="/">Главная</a></small>
+        <small style="text-align: right" th:inline="text" >
+            [[${#httpServletRequest.remoteUser}]]
+            <a href="/logout">Выйти</a></small>
         <div>
             <p><span>a</span>x<sup>2</sup>+<span>b</span>x+<span>c</span>=0</p>
             <p>Вы ввели:</p>
-            <p><span th:text="${a}"/>x<sup>2</sup>+<span th:text="${b}"/>x+<span th:text="${c}"/>=0</p>
-            <p th:text="${d}" />
+            <p><span th:text="${a}"></span>x<sup>2</sup><a th:text="${signB}"></a><span th:text="${newB}"></span>x<a th:text="${signC}"></a><span th:text="${newC}"></span>=0</p>
             <p>Результат:</p>
-            <p th:text="${result0}" />
-            <p><a th:text="${x}"/><sub th:text="${one}"/><a th:text="${equals}"/><a th:text="${result1}"/></p>
-            <p><a th:text="${x}"/><sub th:text="${two}"/><a th:text="${equals}"/><a th:text="${result2}"/></p>
-            <p th:text="${result3}" />
+            <p th:if="${result0}">x=<a th:text="${result0}"></a></p>
+            <p th:if="${result1}">x<sub>1</sub>=<a th:text="${result1}"></a></p>
+            <p th:if="${result2}">x<sub>2</sub>=<a th:text="${result2}"></a></p>
+            <p th:text="${result3}"></p>
+            <button style="text-align: center" type="submit" name="showSolution">
+                <a>Показать решение</a>
+                <small><small><small>(Только для премиум-пользователей)</small></small></small>
+            </button>
         </div>
     </fieldset>
 </form>

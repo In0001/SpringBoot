@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Калькулятор</title>
+    <link rel="stylesheet" th:href="@{css/styles.css}" />
+</head>
+<body>
+<form>
+    <h1 style="text-align: center">Ошибка 403</h1>
+    <fieldset>
+        <small style="text-align: right"><a href="/">Главная</a></small>
+        <small style="text-align: right" th:inline="text" >
+            [[${#httpServletRequest.remoteUser}]]
+            <a href="/logout">Выйти</a></small>
+        <div>
+            <p>Посмотреть решение могут только премиум-пользователи!</p>
+        </div>
+    </fieldset>
+</form>
+</body>
+</html>
