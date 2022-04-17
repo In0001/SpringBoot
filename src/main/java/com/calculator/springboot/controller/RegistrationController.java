@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.HashSet;
 import java.util.Set;
 
 @Controller
@@ -54,21 +53,20 @@ public class RegistrationController {
         Role userRole;
         ERole erole;
 
-        if (roleParameter.equals("user")) {
+        if ("user".equals(roleParameter)) {
             erole = ERole.ROLE_USER;
         }
-        else
+        else {
             erole = ERole.ROLE_PREMIUM;
+        }
 
-        if (!roleRepository.existsByName(erole))
+        if (!roleRepository.existsByName(erole)) {
             createRole(erole);
+        }
 
         userRole = roleRepository.findByName(erole);
 
-        Set<Role> roles = new HashSet<>();
-        roles.add(userRole);
-
-        user.setRoles(roles);
+        user.setRoles(Set.of(userRole));
         userRepository.save(user);
 
         model.addAttribute("successfulRegistration", "Пользователь зарегистрирован");
