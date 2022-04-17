@@ -34,7 +34,7 @@ public class RegistrationController {
     public String registerUser(@RequestParam("username") String username,
                                @RequestParam("password") String password,
                                @RequestParam("passwordConfirmation") String passwordConfirmation,
-                               @RequestParam("roles") String role,
+                               @RequestParam("roles") String roleParameter,
                                Model model) {
 
         if (userRepository.existsByUsername(username)) {
@@ -52,20 +52,31 @@ public class RegistrationController {
         user.setPassword(encoder.encode(password));
 
         Role userRole;
+        ERole erole;
 
-        if (role.equals("user"))
-            userRole = roleRepository.findByName(ERole.ROLE_USER);
+        if (roleParameter.equals("user")) {
+            erole = ERole.ROLE_USER;
+        }
         else
-            userRole = roleRepository.findByName(ERole.ROLE_PREMIUM);
+            erole = ERole.ROLE_PREMIUM;
+
+        if (!roleRepository.existsByName(erole))
+            createRole(erole);
+
+        userRole = roleRepository.findByName(erole);
 
         Set<Role> roles = new HashSet<>();
         roles.add(userRole);
 
         user.setRoles(roles);
-
         userRepository.save(user);
+
         model.addAttribute("successfulRegistration", "Пользователь зарегистрирован");
 
         return "registration";
+    }
+
+    void createRole(ERole role) {
+        roleRepository.save(new Role(role));
     }
 }
